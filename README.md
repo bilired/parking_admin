@@ -1,4 +1,4 @@
-<img width="312" height="606" alt="image" src="https://github.com/user-attachments/assets/868d2131-f4af-4051-b8a4-e09f6fb3012d" />
+
 Hong Kong Parking Management System — 基於 Vue3 + Django + Mapbox + MySQL 構建。
 
 ## 功能特性
