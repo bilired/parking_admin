@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-primary: #f3f8ff;
+  --bg-secondary: #ffffff;
+  --bg-card: #f9fcff;
+  --accent: #2f7ef7;
+  --accent-hover: #1f70ea;
+  --accent-success: #26c281;
+  --accent-warning: #f5a623;
+  --accent-danger: #e74c3c;
+  --text-primary: #1f3552;
+  --text-secondary: #5e7898;
+  --border: #d7e5f7;
+}
+
+html, body, #app {
+  height: 100%;
+  font-family: 'Noto Sans HK', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
+
+/* Element Plus overrides */
+.el-button--primary {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+.el-button--primary:hover {
+  background-color: var(--accent-hover) !important;
+  border-color: var(--accent-hover) !important;
+}
+
+.el-input__wrapper {
+  background-color: #ffffff !important;
+  box-shadow: none !important;
+  border: 1px solid var(--border) !important;
+}
+.el-input__wrapper:hover,
+.el-input__wrapper.is-focus {
+  border-color: var(--accent) !important;
+}
+.el-input__inner {
+  color: var(--text-primary) !important;
+  background-color: transparent !important;
+}
+.el-input__inner::placeholder {
+  color: var(--text-secondary) !important;
+}
+
+.el-select .el-input__wrapper {
+  background-color: #ffffff !important;
+}
+.el-select-dropdown {
+  background-color: #ffffff !important;
+  border-color: var(--border) !important;
+}
+.el-select-dropdown__item {
+  color: var(--text-primary) !important;
+}
+.el-select-dropdown__item.hover,
+.el-select-dropdown__item:hover {
+  background-color: var(--bg-secondary) !important;
+}
+
+/* Card global style */
+.app-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 8px 24px rgba(47, 126, 247, 0.08);
+}
