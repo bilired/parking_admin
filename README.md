@@ -1,11 +1,11 @@
-# 香港停車場管理系統
+<img width="1920" height="849" alt="image" src="https://github.com/user-attachments/assets/9caf9a48-f505-44ac-8016-7007382f1ff1" /># 香港停車場管理系統
 
 Hong Kong Parking Management System — 基於 Vue3 + Django + Mapbox + MySQL 構建。
 
 ## 功能特性
 
 - **用戶登入 / 註冊** — JWT 認證，Token 自動刷新
-- ![Uploading image.png…]()
+<img width="1920" height="849" alt="image" src="https://github.com/user-attachments/assets/e3bb7de1-effa-47e7-8b1f-0ca5d559b89d" />
 
 - **停車場搜索** — 按名稱、地址、地區篩選全港停車場
 - **實時空位** — 對接香港運輸署實時数据 API
