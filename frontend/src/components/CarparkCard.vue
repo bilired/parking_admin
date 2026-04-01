@@ -77,8 +77,9 @@ const vacancyClass = computed(() => {
   transition: all 0.2s;
 }
 .carpark-card:hover {
-  border-color: rgba(79, 142, 247, 0.4);
-  background: rgba(30, 33, 48, 0.9);
+  border-color: rgba(79, 142, 247, 0.5);
+  background: rgba(79, 142, 247, 0.06);
+  box-shadow: 0 2px 12px rgba(79, 142, 247, 0.08);
 }
 .carpark-card.selected {
   border-color: var(--accent);

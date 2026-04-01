@@ -15,6 +15,12 @@
           導航
         </el-button>
         <el-button
+          size="small"
+          @click="emit('live')"
+        >
+          实况
+        </el-button>
+        <el-button
           circle
           :type="isFavorite ? 'warning' : 'default'"
           :icon="isFavorite ? StarFilled : Star"
@@ -121,6 +127,7 @@ const emit = defineEmits<{
   (e: 'close'): void
   (e: 'toggle-favorite'): void
   (e: 'navigate'): void
+  (e: 'live'): void
 }>()
 
 const lastUpdate = computed(() => {

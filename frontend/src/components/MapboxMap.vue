@@ -23,6 +23,8 @@ const props = defineProps<{
   sidebarCollapsed?: boolean
   routeTarget?: CarparkInfo | null
   routeRequestId?: number
+  streetViewTarget?: CarparkInfo | null
+  streetViewRequestId?: number
 }>()
 
 const emit = defineEmits<{
@@ -91,6 +93,7 @@ class DirectionsToggleControl implements mapboxgl.IControl {
     this.button.setAttribute('aria-pressed', String(expanded))
   }
 }
+
 
 class StyleSwitcherControl implements mapboxgl.IControl {
   private container?: HTMLDivElement
@@ -443,6 +446,35 @@ function changeMapStyle(styleId: (typeof MAP_STYLES)[number]['id']) {
   })
 }
 
+function getStreetViewTargetCoords(): [number, number] | null {
+  if (props.selectedCarpark?.longitude != null && props.selectedCarpark.latitude != null) {
+    return [props.selectedCarpark.longitude, props.selectedCarpark.latitude]
+  }
+
+  if (currentUserLocation) {
+    return currentUserLocation
+  }
+
+  if (!map) return null
+  const center = map.getCenter()
+  return [center.lng, center.lat]
+}
+
+function openStreetViewAt(coords: [number, number] | null) {
+  if (!coords) {
+    ElMessage.warning('目前沒有可用位置，請先選擇停車場或移動地圖')
+    return
+  }
+
+  const [lng, lat] = coords
+  const url = `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${lat},${lng}`
+  const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+  if (!newWindow) {
+    ElMessage.warning('無法開啟街景視窗，請檢查瀏覽器彈出視窗設定')
+  }
+}
+
+
 async function startNavigationTo(target: CarparkInfo | null) {
   if (!target || !directionsControl || target.longitude == null || target.latitude == null) {
     return
@@ -497,6 +529,7 @@ async function initMap() {
   directionsControl = new MapboxDirections({
     accessToken: token,
     interactive: false,
+    language: 'zh-tw',
     unit: 'metric',
     profile: 'mapbox/driving',
     geocoder: {
@@ -587,6 +620,8 @@ watch(
     startNavigationTo(props.routeTarget ?? null)
   }
 )
+
+
 
 onMounted(async () => {
   await initMap()

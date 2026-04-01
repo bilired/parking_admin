@@ -184,6 +184,7 @@
           @close="carparkStore.selectCarpark(null)"
           @navigate="handleNavigate(carparkStore.selectedCarpark!)"
           @toggle-favorite="handleToggleFavorite(carparkStore.selectedCarpark!)"
+          @live="handleLive(carparkStore.selectedCarpark!)"
         />
       </transition>
     </main>
@@ -242,6 +243,8 @@ function handleNavigate(cp: CarparkInfo) {
   routeRequestId.value += 1
 }
 
+
+
 async function handleSearch() {
   await carparkStore.fetchCarparks({
     search: searchText.value || undefined,
@@ -285,6 +288,18 @@ async function handleToggleFavorite(cp: CarparkInfo) {
     }
   } catch {
     ElMessage.error('操作失敗，請稍後再試')
+  }
+}
+
+async function handleLive(cp: CarparkInfo) {
+  if (!cp || cp.longitude == null || cp.latitude == null) {
+    ElMessage.warning('此停車場沒有可用座標，無法開啟實況')
+    return
+  }
+  const url = `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${cp.latitude},${cp.longitude}`
+  const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+  if (!newWindow) {
+    ElMessage.warning('無法開啟街景視窗，請檢查瀏覽器彈出視窗設定')
   }
 }
 
@@ -394,15 +409,15 @@ watch(sidebarCollapsed, (collapsed) => {
 .icon-btn:hover { color: var(--accent) !important; }
 
 .sidebar.collapsed .sidebar-expand-btn {
-  color: var(--text-secondary) !important;
+  color: #ffffff !important;
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
 }
 
 .sidebar.collapsed .sidebar-expand-btn:hover {
-  color: var(--accent) !important;
-  background: transparent !important;
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.08) !important;
   border: none !important;
   box-shadow: none !important;
 }

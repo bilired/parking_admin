@@ -4,6 +4,7 @@ declare module '@mapbox/mapbox-gl-directions/dist/mapbox-gl-directions' {
   interface DirectionsOptions {
     accessToken: string
     interactive?: boolean
+    language?: string
     unit?: 'imperial' | 'metric'
     profile?: string
     flyTo?: boolean
