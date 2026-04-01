@@ -1,25 +1,39 @@
-# 香港停車場管理系統
 
 Hong Kong Parking Management System — 基於 Vue3 + Django + Mapbox + MySQL 構建。
 
 ## 功能特性
 
 - **用戶登入 / 註冊** — JWT 認證，Token 自動刷新
+<img width="1920" height="849" alt="image" src="https://github.com/user-attachments/assets/e3bb7de1-effa-47e7-8b1f-0ca5d559b89d" />
+<img width="1920" height="845" alt="image" src="https://github.com/user-attachments/assets/8a8a0662-91e4-4386-bb04-d43cc92f672f" />
+
 - **停車場搜索** — 按名稱、地址、地區篩選全港停車場
+<img width="1920" height="848" alt="image" src="https://github.com/user-attachments/assets/4b1af1ed-e9a4-42c2-9407-171de2f32457" />
+
 - **實時空位** — 對接香港運輸署實時数据 API
-- **地圖展示** — Mapbox 地圖，顏色標記空位狀態，支持 5 種底圖切換（深色 / 淺色 / 街道 / 戶外 / 衛星）
+- **地圖展示** — Mapbox Dark 风格地圖，顏色標記空位狀態
   - 🟢 綠色：空位充足（≥10）
   - 🟡 黃色：空位不足（< 10）
   - 🔴 紅色：已滿
   - 🔵 藍色：無空位數據（停車場未提供實時資料）
-- **駕車導航** — 集成 Mapbox Directions，點擊停車場卡片「導航」按鈕即可規劃路線
-  - 自動定位當前位置作為起點（需授予定位權限）
-  - 支持駕車 / 步行 / 單車路線模式切換
-  - 提供逐步文字導航指引及預計時間
-  - 支持點擊地圖任意位置手動設置起點 / 終點
-  - 導航面板可隨時展開 / 收起，不影響地圖瀏覽
-- **GPS 定位** — 一鍵定位當前位置，支持實時追蹤與方向指示
-- **收藏功能** — 收藏常用停車場（地圖標記 ★），分頁集中管理
+- **收藏功能** — 收藏常用停車場，分頁集中管理
+<img width="1920" height="849" alt="image" src="https://github.com/user-attachments/assets/39b102f3-97d3-471f-95c9-67d7d2edc9ce" />
+<img width="1920" height="834" alt="image" src="https://github.com/user-attachments/assets/ec175e0e-4029-45d7-bd28-1c1dc9347186" />
+- 駕車導航：點擊停車場卡片「導航」按鈕，自動以 GPS 當前位置為起點，目標停車場為終點規劃路線
+<img width="1542" height="849" alt="image" src="https://github.com/user-attachments/assets/97d15ac6-b3ab-414a-9101-849d661ea559" />
+- 路線模式：支持駕車 / 步行 / 單車切換
+
+- 逐步指引：提供文字導航步驟及預計時間
+
+- 地圖點選：可點擊地圖任意位置手動設置起點 / 終點
+
+- 面板收折：導航面板可隨時展開 / 收起
+
+- GPS 定位：一鍵定位，支持實時追蹤和方向顯示
+
+- 底圖切換：5 種地圖風格（深色 / 淺色 / 街道 / 戶外 / 衛星）
+<img width="1540" height="842" alt="image" src="https://github.com/user-attachments/assets/63b04a6d-dffd-4ecf-a12c-06ae49b9168d" />
+
 - **Mapbox Token 後端保管** — Token 存儲在 Django 後端，不暴露於前端代碼
 
 ## 技術棧
